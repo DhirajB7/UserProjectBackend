@@ -46,7 +46,7 @@ router.post('/', async (req,res)=>{
         name:req.body.name.toLowerCase(),
         email:req.body.email.toLowerCase(),
         role:req.body.role.toLowerCase(),
-        status:req.body.status
+        status:"pending"
     })
 
         await oneUser.save()
