@@ -34,6 +34,14 @@ router.get('/:id', async (req,res) => {
 
 router.post('/', async (req,res)=>{
 
+    try {
+
+    if((await User.find()).filter(a => a.email===req.body.email.toLowerCase()).length > 0){
+
+        res.send("USER ALREADY IN DB")
+
+    }else{
+
     const oneUser = new User({
         name:req.body.name.toLowerCase(),
         email:req.body.email.toLowerCase(),
@@ -41,12 +49,10 @@ router.post('/', async (req,res)=>{
         status:req.body.status
     })
 
-    
-    try {
-
         await oneUser.save()
 
         res.send("USER ADDED "+oneUser.name)
+}
         
     } catch (error) {
 
