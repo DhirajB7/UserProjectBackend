@@ -1,0 +1,19 @@
+{
+  "name": "userprojectbackend",
+  "version": "1.0.0",
+  "description": "Backend for UserProject",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Dhiraj.B",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.5.8",
+    "mongoose": "^5.9.17"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
