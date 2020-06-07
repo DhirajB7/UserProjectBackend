@@ -2,6 +2,7 @@ const Express = require("express");
 const Mongoose = require("mongoose");
 const url = "mongodb://localhost/UserDB";
 const UserRouter = require("./routers/UserRouter");
+const Cors = require("cors");
 
 /////////DataBase Connectivity ////////////
 
@@ -18,6 +19,8 @@ Mongoose.connection.on("open", () =>
 const app = Express();
 
 app.listen(3001, () => console.log("SERVER STARTED AT 3001"));
+
+app.use(Cors());
 
 app.use(Express.json());
 app.use("/user", UserRouter);
