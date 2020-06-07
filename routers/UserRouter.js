@@ -76,7 +76,7 @@ router.patch("/status/:id", async (req, res) => {
     oneUserPatch.status = req.body.status;
     await oneUserPatch.save();
 
-    res.json(oneUserPatch);
+    res.send("STATUS UPDATED");
   } catch (error) {
     res.send(error);
   }
