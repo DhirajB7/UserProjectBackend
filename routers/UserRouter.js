@@ -94,4 +94,23 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+//Search
+
+router.get("/search/:ip", async (req, res) => {
+  try {
+    var nameRegex = {
+      $regex: new RegExp("^" + req.params.ip.toLowerCase(), "i"),
+    };
+
+    await User.find(
+      { $or: [{ name: nameRegex }, { email: nameRegex }] },
+      function (err, data) {
+        res.send(data);
+      }
+    );
+  } catch (error) {
+    res.send(error);
+  }
+});
+
 module.exports = router;
