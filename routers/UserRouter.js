@@ -21,7 +21,6 @@ router.get("/desc", async (req, res) => {
     const allUsers = await User.find().sort({
       name: "desc",
     });
-    console.log(allUsers);
     res.send(allUsers);
   } catch (error) {
     res.send(error);
@@ -105,6 +104,7 @@ router.get("/search/:ip", async (req, res) => {
     await User.find(
       { $or: [{ name: nameRegex }, { email: nameRegex }] },
       function (err, data) {
+        console.log(typeof data);
         res.send(data);
       }
     );
